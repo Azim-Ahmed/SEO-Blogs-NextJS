@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { APP_NAME } from '../../config';
+import { signout, isAuth } from '../../actions/auth';
 
 import {
   Collapse,

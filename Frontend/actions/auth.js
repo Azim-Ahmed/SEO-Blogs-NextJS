@@ -31,6 +31,21 @@ export const signin = (user) => {
     }).catch(err => console.log(err))
 }
 
+//sign out method
+
+export const signout = (next) => {
+    removeCookie('token')
+    removeLocalStorage('user')
+    next()
+
+
+    return fetch(`${API}/signout`, {
+        method: 'GET',
+    }).then(response => console.log('Signout Success'))
+        .catch(err => console.log(err))
+
+}
+
 //***set cookie method
 
 export const setCookie = (key, value) => {
@@ -77,4 +92,20 @@ export const removeLocalStorage = (key) => {
 export const authenticate = (data, next) => {
     setCookie('token', data.token)
     setLocalStorage('user', data.user)
+    next()
+}
+
+//checking the user logged in or not
+
+export const isAuth = () => {
+    if (process.browser) {
+        const cookieChecked = getCookie('token')
+        if (cookieChecked) {
+            if (localStorage.getItem('user')) {
+                return JSON.parse(localStorage.getItem('user'))
+            } else {
+                return false
+            }
+        }
+    }
 }
