@@ -63,11 +63,13 @@ export const getCookie = (key) => {
 //**localstorage
 
 export const setLocalStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value))
+    if (process.browser) { localStorage.setItem(key, JSON.stringify(value)) }
+
 }
 
 export const removeLocalStorage = (key) => {
-    localStorage.removeItem(key)
+    if (process.browser) { localStorage.removeItem(key) }
+
 }
 
 //authenticate user by pass data to cookie  and localstorage
