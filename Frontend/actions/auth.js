@@ -68,10 +68,10 @@ export const removeCookie = (key) => {
 }
 //get cookie method
 
-export const getCookie = (key) => {
+export const getCookie = key => {
     //Next js is running both sides (client  and server side )
     if (process.browser) {
-        setCookie.get(key)
+        return cookie.get(key)
     }
 }
 
