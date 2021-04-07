@@ -66,6 +66,9 @@ export const setLocalStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value))
 }
 
+export const removeLocalStorage = (key) => {
+    localStorage.removeItem(key)
+}
 
 //authenticate user by pass data to cookie  and localstorage
 
